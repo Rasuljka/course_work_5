@@ -3,8 +3,10 @@
 Для работы с программой нужно запустить файлы utils.py, main.py и следовать инструкциям
 
 ![Screenshot_2](https://github.com/Rasuljka/course_work_5/assets/151017805/011f32fe-8371-4860-b6f8-440dd1e565b9) 
+
 Меню программы
 
 ![Screenshot_1](https://github.com/Rasuljka/course_work_5/assets/151017805/93b1e068-f043-49a8-bbe2-81e43a5e728d)
+
 Возможный вариант ответа при выборе пункта "1" из меню
 
