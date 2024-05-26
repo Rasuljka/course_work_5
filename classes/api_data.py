@@ -3,17 +3,19 @@ import requests
 
 class HHParser:
     def get_request(self):
+        """Получает данные с сайта hh.ru"""
         params = {
             "per_page": 10,
             "sort_by": "by_vacancies_open"
         }
-        response = requests.get(f"https://api.hh.ru/employers", params=params)
+        response = requests.get("https://api.hh.ru/employers", params=params)
         if response.status_code == 200:
             return response.json()['items']
         else:
             print("Произошла ошибка при выполнении запроса.")
 
     def get_employers(self):
+        """Получает данные о работодателях"""
         data = self.get_request()
         employers = []
         for employer in data:
@@ -21,15 +23,17 @@ class HHParser:
         return employers
 
     def get_vacancies(self, id_company):
+        """Получает вакансии топ-10 работодателей"""
         params = {
             "per_page": 10,
             "employer_id": id_company
         }
-        response = requests.get(f"https://api.hh.ru/vacancies", params=params)
+        response = requests.get("https://api.hh.ru/vacancies", params=params)
         if response.status_code == 200:
             return response.json()['items']
 
     def get_all_vacancies(self):
+        """Получает список всех вакансий"""
         employers = self.get_employers()
         vacancies = []
         for employer in employers:
@@ -37,6 +41,7 @@ class HHParser:
         return vacancies
 
     def filter_vacancies(self):
+        """Фильтрует вакансии по зарплате"""
         vacancies = self.get_all_vacancies()
         filter_data = []
         for vacancy in vacancies:

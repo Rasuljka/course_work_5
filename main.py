@@ -35,7 +35,7 @@ while True:
     else:
         print("Вы ввели некорректный номер задачи. Попробуйте еще раз.")
 
-    user_input_1 = input("Хотите ли вы продолжить работу с менеджером базы? (y/n): ")
+    user_input_1 = input("Хотите ли вы продолжить работу с менеджером базы? (y/n): \n")
     if user_input_1 == "y":
         continue
     elif user_input_1 == "n":

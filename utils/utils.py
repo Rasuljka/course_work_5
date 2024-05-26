@@ -4,7 +4,8 @@ from classes.api_data import HHParser
 
 
 def create_database(db_name):
-    conn = psycopg2.connect(dbname='postgres1', **config())
+    """Создает базу данных"""
+    conn = psycopg2.connect(dbname='test', **config())
     conn.autocommit = True
     cur = conn.cursor()
     cur.execute(f'DROP DATABASE IF EXISTS {db_name}')
@@ -15,6 +16,7 @@ def create_database(db_name):
 
 
 def create_tables(db_name):
+    """Создает таблицы в базе данных"""
     conn = psycopg2.connect(dbname=db_name, **config())
     with conn:
         with conn.cursor() as cur:
@@ -36,6 +38,7 @@ def create_tables(db_name):
 
 
 def insert_data_into_tables(db_name):
+    """Заполняет таблицы данными"""
     hh = HHParser()
     employers = hh.get_employers()
     vacancies = hh.filter_vacancies()
@@ -57,6 +60,7 @@ def insert_data_into_tables(db_name):
     conn.close()
 
 
-create_database('postgres1')
-create_tables('postgres1')
-insert_data_into_tables('postgres1')
+db_name = 'postgres1'
+create_database(db_name)
+create_tables(db_name)
+insert_data_into_tables(db_name)
